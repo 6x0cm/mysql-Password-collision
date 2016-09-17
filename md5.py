@@ -1,7 +1,7 @@
 # -*- coding: gb2312 -*-
 #author 6x0cm
 #website www.06m.me
-#use:md5.py host user pass database table md5(32位)
+#use:md5.py host user pass database table md5(32浣�)
 import pymysql
 import sys
 
@@ -30,11 +30,13 @@ db.close()
 flag = False
 for ii in info:
     try:
-        password = md5(ii[0])
+        data = ii[0].replace('\r', '')
+        password = md5("laoy"+data)
+#        password = md5(data)
         if password == find_md5:
-            print "匹配出的明文" + ii[0]
+            print "鍖归厤鍑虹殑鏄庢枃" + ii[0]
             flag = True
     except:
         pass
 if not flag:
-    print "无匹配结果!"
+    print "鏃犲尮閰嶇粨鏋�!"
